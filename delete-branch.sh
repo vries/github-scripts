@@ -2,9 +2,15 @@
 
 set -e
 
-branch=$(git-prompt-branch.sh "Which branch do you want to delete" src)
+pwd=$(pwd -P)
 
-cd src
+repo="$pwd/src"
+
+branch=$(git-prompt-branch.sh \
+    "Which branch do you want to delete" \
+    "$repo")
+
+cd "$repo"
 
 git branch -D "$branch" \
     || true
@@ -12,4 +18,3 @@ git branch -D "$branch" \
 # http://stackoverflow.com/questions/2003505/delete-a-git-branch-both-locally-and-remotely
 git push origin --delete "$branch" \
     || true
-
