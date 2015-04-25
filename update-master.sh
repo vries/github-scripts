@@ -1,6 +1,10 @@
 #!/bin/sh
 
-cd src
+pwd=$(pwd -P)
+
+repo="$pwd/src"
+
+cd "$repo"
 
 git checkout master
 
