@@ -8,7 +8,8 @@ cd "$repo"
 
 git checkout master
 
-git fetch mirror
+git fetch -p mirror
+git fetch -p origin
 
 git reset --hard mirror/master
 
