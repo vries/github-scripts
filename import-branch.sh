@@ -10,7 +10,11 @@ tobranch="$5"
 
 pwd=$(pwd -P)
 
-bundle="$pwd/$branch.bundle"
+filename=$(echo $branch \
+    | sed 's%/%-%g')
+
+
+bundle="$pwd/$filename.bundle"
 rm -f "$bundle"
 
 (
