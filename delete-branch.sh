@@ -6,9 +6,21 @@ pwd=$(pwd -P)
 
 repo="$pwd/src"
 
-branch=$(git-prompt-branch.sh \
+(
+    cd "$repo"
+    git fetch --prune origin
+)
+
+branches=$(cd "$repo"
+    git branch -r | grep origin/vries \
+       | sed 's/^\* /  /')
+
+branch=$(prompt.sh \
     "Which branch do you want to delete" \
-    "$repo")
+    $branches)
+
+branch=$(echo "$branch" \
+    | sed 's%^origin/%%')
 
 cd "$repo"
 
