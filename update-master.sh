@@ -6,11 +6,18 @@ repo="$pwd/src"
 
 cd "$repo"
 
-git checkout master
-
-git fetch -p mirror
+git fetch -p gcc-gnu-org
 git fetch -p origin
 
-git reset --hard mirror/master
+git checkout master
+git reset --hard gcc-gnu-org/master
+git push origin master
 
-git push
+git checkout trunk
+git reset --hard gcc-gnu-org/master
+git push origin trunk
+
+git checkout gomp-4_0-branch
+git reset --hard svn/gomp-4_0-branch
+git push origin gomp-4_0-branch
+
